@@ -11,9 +11,13 @@ import requests
 
 from rest.model.chat_request import ChatRequest
 
+
+
 #Titles
-st.title("💬 Chatbot with Memory")
+st.title("💬 Chatbot")
 st.caption("🚀 My First Chatbot using Cohere")
+
+
 
 #Sidebar with description
 with st.sidebar:
@@ -35,10 +39,9 @@ st.markdown(
 #FastAPI created at 
 api_url="http://127.0.0.1:8000/chat"
 
-# Code copied from https://github.com/streamlit/llm-examples/blob/main/Chatbot.py
 # Initialize the chat history
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you my friend?"}]
 
 # Display the chat history
 for msg in st.session_state.messages:
@@ -47,7 +50,6 @@ for msg in st.session_state.messages:
 # When a user submits a message
 if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
-    ##st.chat_message("assistant").write("Hello Buddy")
 
     # Display the user's message
     st.chat_message("user").write(prompt)
